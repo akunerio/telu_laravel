@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Session;
 
 class ProductController extends Controller {
   public function index()
@@ -27,7 +28,10 @@ class ProductController extends Controller {
 	    $prod->name = $request->name;
 	    $prod->price = $request->price;
 	    $prod->save();
-	    return redirect('/product')->with('msg', 'Tambah berhasil');
+
+        Session::flash('msg', 'Tambah berhasil');
+
+	    return redirect('/product'); //->with('msg', 'Tambah berhasil');
   }
 
   public function show($id)
