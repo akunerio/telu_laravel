@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Lat1Controller;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,18 @@ Route::get('lat1', [Lat1Controller::class,'index']);
 
 
 Route::resource('product', ProductController::class);
+
+Route::get('/login', function () {
+    if (session()->has('email')) return redirect('/product');
+    return view('login');
+});
+
+Route::get('/logout', function () {
+    session()->flush();
+    return redirect('/login');
+});
+
+
+Route::post('auth', [SiteController::class, 'auth']);
+
+Route::get('initial', [SiteController::class, 'addUser']);
