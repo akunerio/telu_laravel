@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Daftar Produk</title>
-	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body style="width:95%">
-    <div class="row justify-content-center" style="margin-top:13%">
-      <div class="col-3">
+@extends('template')
+
+@section('title','daftar produk')
+
+@section('content')
+<div class="col-3">
 	        <span class="float-left">{{ session('msg') }}</span>
 	        <a href="/product/create" class="btn btn-secondary float-right">Tambah</a><br /><br />
         <table class="table table-bordered table-striped">
@@ -32,6 +28,4 @@
           @endforeach
         </table>
       </div>
-    </div>
-  </body>
-</html>
+@endsection
