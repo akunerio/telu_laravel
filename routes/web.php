@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Lat1Controller;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data["hai"] = "<strong>hello</strong>";
+
+    return view('welcome', $data);
 });
+
+Route::get('/hello', function() {
+   echo "hallo";
+});
+
+Route::get('lat1', [Lat1Controller::class,'index']);
+
+
+Route::resource('product', ProductController::class);
