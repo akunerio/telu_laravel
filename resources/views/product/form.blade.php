@@ -10,11 +10,27 @@
           <input type="hidden" name="_method" value="{{ $method }}" />
           <div class="form-group">
             <label>Nama</label>
-            <input type="text" name="name" class="form-control" value="{{ isset($data)?$data->name:'' }}" />
+            <input type="text" name="name" class="form-control
+            @error('name')
+                is-invalid
+            @enderror
+            "
+            value="{{ isset($data)?$data->name:old('name') }}" />
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label>Harga</label>
-            <input type="number" name="price" class="form-control" value="{{ isset($data)?$data->price:'' }}" />
+            <input type="number" name="price" class="form-control
+            @error('price')
+                is-invalid
+            @enderror
+            "
+            value="{{ isset($data)?$data->price:old('price') }}" />
+            @error('price')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
           <div style="text-align:center">
             <button class="btn btn-success">Simpan</button>

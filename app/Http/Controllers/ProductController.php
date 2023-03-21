@@ -24,6 +24,12 @@ class ProductController extends Controller {
 
   public function store(Request $request)
   {
+
+    $this->validate($request, [
+        'name' => 'required|min:4',
+        'price' => 'required|integer|min:1000000'
+    ]);
+
 	    $prod = new Product;
 	    $prod->name = $request->name;
 	    $prod->price = $request->price;
