@@ -29,12 +29,12 @@ Route::get('/hello', function() {
 Route::get('lat1', [Lat1Controller::class,'index']);
 
 
-Route::resource('product', ProductController::class);
+Route::resource('product', ProductController::class)->middleware('auth');
 
 Route::get('/login', function () {
-    if (session()->has('email')) return redirect('/product');
+    if (Auth::check()) return redirect('/product');
     return view('login');
-});
+})->name('login');
 
 Route::get('/logout', function () {
     session()->flush();
