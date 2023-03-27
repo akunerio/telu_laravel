@@ -10,12 +10,26 @@
           <tr>
             <th>Nama</th>
             <th>Harga</th>
+            <th>Variant</th>
             <th>Aksi</th>
           </tr>
           @foreach($list as $d)
           <tr>
             <td>{{ $d->name }}</td>
             <td>{{ $d->price }}</td>
+            <td>
+                <ul>
+                @foreach($d->variants as $var)
+                    <li>{{ $var->name }}</li>
+                    Desc: {{ $var->description }} <br />
+                Proc: {{ $var->processor }} <br />
+                RAM: {{ $var->memory }} <br />
+                Strg: {{ $var->storage }} <br />
+                Product: {{ $var->product->name }}
+                    @endforeach
+                  </ul>
+            </td>
+
             <td>
               <a href="/product/{{ $d->id }}/edit" class="btn btn-primary">Edit</a>
 	              <form method="post" action="/product/{{ $d->id }}" style="display:inline" onsubmit="return confirm('Yakin hapus?')">

@@ -9,7 +9,8 @@ use Session;
 class ProductController extends Controller {
   public function index()
   {
-	    $prods = Product::get();
+	    //$prods = Product::get();
+        $prods = Product::with('variants')->get();
 	    return view('product.index', ['list' => $prods]);
   }
 
