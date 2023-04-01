@@ -14,7 +14,7 @@ class VariantSeeder extends Seeder
     public function run(): void
     {
         DB::table('variants')->insert([
-            'product_id' => 1,
+            'product_id' => 3,
             'name' => "Varian A",
             'description' => "Deskripsi A",
             'processor' => "A",
@@ -23,7 +23,7 @@ class VariantSeeder extends Seeder
         ]);
 
         DB::table('variants')->insert([
-            'product_id' => 1,
+            'product_id' => 2,
             'name' => "Varian B",
             'description' => "Deskripsi B",
             'processor' => "B",

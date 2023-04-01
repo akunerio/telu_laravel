@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('processor');
             $table->string('memory');
             $table->string('storage');
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
